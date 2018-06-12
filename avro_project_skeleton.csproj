@@ -20,7 +20,7 @@
   </Target>	  
 
   <ItemGroup>
-     <Compile Include="target\cs\*"/>	  
+	  <Compile Include="obj/generated-sources/**/*.cs"/>	  
   </ItemGroup>	  
 
 </Project>
