@@ -8,9 +8,14 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <AvroFiles Include="src/main/avro/*.avsc"/>	  
+  </ItemGroup>	  
+
   <Target Name="GenerateSources" BeforeTargets="BeforeBuild">
      <Message Text="Generating C# classes" Importance="high"/>
-     <Exec Command="dotnet $(ProjectDir)/thirdparty/dotnet/avrogen/avrogen.dll -s src/main/avro/*.avsc $(ProjectDir)/obj/GeneratedSources"/>
+
+     <Exec Command="dotnet $(ProjectDir)/thirdparty/dotnet/avrogen/avrogen.dll -s src/main/avro/%(AvroFiles.Filename)%(AvroFiles.Extension) $(ProjectDir)/obj/GeneratedSources"/>
      <ItemGroup>
         <Compile Include="$(ProjectDir)\obj\GeneratedSources\**\*.cs"/>     
      </ItemGroup>	     
@@ -21,7 +26,5 @@
   </ItemGroup>
 
   <UsingTask TaskName="AvroBuild" AssemblyName="Confluent.Apache.Avro"/>
-
-
 
 </Project>

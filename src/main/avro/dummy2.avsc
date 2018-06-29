@@ -1,0 +1,7 @@
+{"namespace": "com.mycompany",
+ "type": "record",
+ "name": "Dummy2",
+ "fields": [
+     {"name": "value2", "type": "string"}
+ ]
+}
